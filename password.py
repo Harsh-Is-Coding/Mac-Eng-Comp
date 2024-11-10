@@ -1,4 +1,4 @@
-import getpass
+vscode-remote://wsl%2Bubuntu/home/harsh_s/random/test/test.py vscode-remote://wsl%2Bubuntu/home/harsh_s/random/test/application.pyimport getpass
 from cryptography.fernet import Fernet
 
 # Encrypt the password
@@ -119,9 +119,9 @@ def retrieve_password(passname):
 def main():
     global GLOBAL_USERNAME
     GLOBAL_USERNAME = ""
-    input_command = input("Enter command (register/password): ").strip().lower()
+    input_command = input("Enter command (register/add/retrieve): ").strip().lower()
 
-    if input_command == "password":
+    if input_command == "add":
         if sign_in():
             add_password()
     elif input_command == "register":
