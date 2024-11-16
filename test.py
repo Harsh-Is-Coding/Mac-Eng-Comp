@@ -14,9 +14,12 @@ def add_password(email, name, password):
     return response.status_code
 
 def get_password(name, email):
-    response = requests.get(f'{BASE_URL}/get_password/{email}/{name}')
-    print( "password is ", response.json().get('password'))
-    return response.status_code
+    response = requests.get(f'{BASE_URL}/get_password/{email}/{name}')    
+    if response.status_code == 200:
+        print( "password is ", response.json().get('password'))
+        return response.json().get('password')
+    else:
+        print("Error: ", response.json().get('error'))
 
 def get_passwords(email):
     response = requests.get(f'{BASE_URL}/get_passwords/{email}')
@@ -68,7 +71,7 @@ def main():
         if sign_in():
             email = input("Enter email: ")
             passname = input("Enter the name of the password: ")
-            get_password(email, passname)
+            get_password(passname, email)
     elif input_command == "getall":
         if sign_in():
             email = input("Enter email: ")
